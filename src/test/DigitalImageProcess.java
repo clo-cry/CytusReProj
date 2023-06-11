@@ -1,8 +1,7 @@
-package alpha;
+package test;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.plaf.synth.ColorType;
 import java.awt.*;
 import java.awt.color.ColorSpace;
 import java.awt.image.*;
