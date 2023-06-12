@@ -3,6 +3,7 @@ package CytusRhythm.alpha;
 import CytusRhythm.alpha.utils.MP;
 import CytusRhythm.alpha.utils.SelectionScreen;
 import CytusRhythm.alpha.utils.SoundPlayer;
+import test.FibonacciCalculator;
 
 import javax.imageio.ImageIO;
 import javax.sound.sampled.LineUnavailableException;
@@ -76,6 +77,4 @@ public class FallDown extends JFrame {
     public static void main(String[] args) {
         new FallDown();
     }
-
-
 }

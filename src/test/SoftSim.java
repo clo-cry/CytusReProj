@@ -13,13 +13,17 @@ public class SoftSim extends JFrame {
         setUndecorated(true);
         pack();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setOpacity(0.5f);
+        setOpacity(0.2f);
         setLocationRelativeTo(null);
 //        setExtendedState(MAXIMIZED_BOTH);
 //        setAlwaysOnTop(true);
         setVisible(true);
+        setLayout(null);
 
         JLabel label = new JLabel("Hello Kitty");   // do not show with LayoutManager is null
+        label.setBounds(100,100,160,90);
+        label.setFont(new Font("Impact",Font.PLAIN,30));
+        label.setForeground(Color.BLACK);
         getContentPane().add(label, BorderLayout.CENTER);
 
         getContentPane().setBackground(Color.CYAN);

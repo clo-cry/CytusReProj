@@ -1,9 +1,6 @@
 package CytusRhythm.alpha.utils;
 
-import CytusRhythm.alpha.FallDown;
-import CytusRhythm.alpha.obj.obj_ss.CharacterCard;
-import CytusRhythm.alpha.obj.obj_ss.EditButton;
-import CytusRhythm.alpha.obj.obj_ss.StartButton;
+import CytusRhythm.alpha.obj.obj_ss.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,8 +16,14 @@ public class SelectionScreen extends JPanel{
     public static long lastDraw;
     public static double thisTime, lastTime;
     private int x,y;
-    CharacterCard characterCard = new CharacterCard();
+    C_neko neko = new C_neko();
+    C_paff paff = new C_paff();
+    C_robo_head robo_head = new C_robo_head();
+
     public SelectionScreen(){
+        neko.execute();
+        paff.execute();
+        robo_head.execute();
         setLayout(null);
         setDoubleBuffered(true);
         addMouseListener(new MouseAdapter() {
@@ -51,14 +54,20 @@ public class SelectionScreen extends JPanel{
         setSize(new Dimension(6500,900));
         super.paintComponent(g);
         Graphics2D graphics2D = (Graphics2D) g;
+        graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
         setBackground(Color.BLACK);
 //        graphics2D.drawRect(100,100,200,600);
-        characterCard.drawSelf(graphics2D);
+
+        neko.drawSelf(graphics2D);
+        paff.drawSelf(graphics2D);
+        robo_head.drawSelf(graphics2D);
+
         for (int i = 0; i < 24; i++) {
             graphics2D.setColor(Color.gray);
-            graphics2D.drawRect(100 + i * 250, 120, 200, 600);
+            graphics2D.drawRoundRect(100 + i * 300, 70, 230, 650,20,20); // gap 300
             graphics2D.setColor(Color.WHITE);
-            graphics2D.drawString(Integer.toString(i), 110 + i * 250, 140);     // gap 250
+            graphics2D.setFont(new Font("Impact",Font.PLAIN,15));
+            graphics2D.drawString(Integer.toString(i), 120 + i * 300, 100);
 
         }
 
