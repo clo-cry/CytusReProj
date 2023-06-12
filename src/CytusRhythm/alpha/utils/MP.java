@@ -35,9 +35,9 @@ public class MP extends JPanel implements MouseListener, MouseMotionListener, Ke
     };
 
     public MP() {
+        setDoubleBuffered(true);
         for (int i = 0; i < 5; i++) {
             arrayList.add(new Tap(200 + i * 120, 200 + i * 120, this, line));
-            setDoubleBuffered(true);
         }
     }
 

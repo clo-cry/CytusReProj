@@ -12,17 +12,18 @@ public class DigitalImageProcess extends JFrame {
     private JPanel panel;
     private int w = 700, h = 700;
     private BufferedImage bi;
+    private Image im;
 
     public DigitalImageProcess() {
         panel = (JPanel) getContentPane();
         panel.setPreferredSize(new Dimension(w, h));
         pack();
-
+        panel.setBackground(Color.BLACK);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
 
-        // 源码目录下的图片资源的导入方法，在同一package下
+        // Import image in src folder，in the same package
 //        URL imageURL = getClass().getResource("oyama.png");
 //        try {
 //            BufferedImage bufferedImage = ImageIO.read(imageURL);
@@ -31,16 +32,18 @@ public class DigitalImageProcess extends JFrame {
 //        }
 
         try {
-            bi = ImageIO.read(new File("img/oyama.png"));
+            bi = ImageIO.read(new File("img/wildcat_1.png"));
+            System.out.println(bi.getRaster().getBounds());
+            im = bi.getScaledInstance(200,-1,Image.SCALE_SMOOTH);
 //            bi = doColorGray(bi);
 //            bi = doBinaryImage(bi);
 //            bi = doBlur(bi);
-            writeImageFIle(bi);
+//            writeImageFIle(bi);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        panel.getGraphics().drawImage(bi, 0, 0, this);
+        panel.getGraphics().drawImage(im, 0, 0, this);
     }
 
     public void writeImageFIle(BufferedImage bi) {
