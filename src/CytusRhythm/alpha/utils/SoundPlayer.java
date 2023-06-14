@@ -20,12 +20,13 @@ public class SoundPlayer {
     String theStatus;
 
     AudioInputStream audioStream;
-    static String thePath = thePath = ".\\sound\\CHAOS_01.wav";
+    String thePath;
 
     // initialize both the clip and streams
-    public SoundPlayer()
+    public SoundPlayer(String thePath)
             throws UnsupportedAudioFileException,
             IOException, LineUnavailableException {
+        this.thePath = thePath;
         // the input stream object
         audioStream =
                 AudioSystem.getAudioInputStream(
@@ -46,7 +47,7 @@ public class SoundPlayer {
 //            thePath = "add the path to the audio file here";
 
             SoundPlayer simpleSoundPlayer =
-                    new SoundPlayer();
+                    new SoundPlayer("sound/op_loop_01.wav");
 
             simpleSoundPlayer.play();
             Scanner scanned = new Scanner(System.in);

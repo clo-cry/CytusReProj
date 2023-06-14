@@ -1,5 +1,6 @@
 package CytusRhythm.alpha.utils;
 
+import CytusRhythm.alpha.FallDown;
 import CytusRhythm.alpha.obj.obj_ss.*;
 
 import javax.swing.*;
@@ -8,6 +9,7 @@ import java.awt.event.*;
 
 public class SelectionScreen extends JPanel{
     public boolean startPrepared = false;
+    public boolean editPrepared = false;
     private Point initialClick;
     public static int frameIndex;
     public static int frameInterval = 16;
@@ -20,12 +22,12 @@ public class SelectionScreen extends JPanel{
     C_paff paff = new C_paff();
     C_robo_head robo_head = new C_robo_head();
 
-    public SelectionScreen(){
+    public SelectionScreen(FallDown fallDown){
         neko.execute();
         paff.execute();
         robo_head.execute();
         setLayout(null);
-        setDoubleBuffered(true);
+//        setDoubleBuffered(true);
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 initialClick = e.getPoint();
@@ -39,19 +41,19 @@ public class SelectionScreen extends JPanel{
                 x = thisX + xMoved;
                 if (x > 0){
                     x = 0;
-                } else if (x< -4900) {
-                    x = -4900;
+                } else if (x< -5700) {
+                    x = -5700;
                 }
                 setLocation(x, 0);
             }
         });
         add(new StartButton(this));
-        add(new EditButton());
+        add(new EditButton(this));
     }
 
     @Override
     protected void paintComponent(Graphics g) {
-        setSize(new Dimension(6500,900));
+        setSize(new Dimension(7300,900));
         super.paintComponent(g);
         Graphics2D graphics2D = (Graphics2D) g;
         graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
@@ -88,7 +90,7 @@ public class SelectionScreen extends JPanel{
         }
         lastDraw = System.currentTimeMillis();
         graphics2D.setColor(Color.YELLOW);
-        graphics2D.drawString("FPS£º " + framePerSecond + "  " + "Thread Sleep£º" + sleepTime + "ms ", 5-x,15);
+        graphics2D.drawString("FPS: " + framePerSecond + "  " + "Thread Sleep: " + sleepTime + "ms ", 5-x,15);
         repaint();
     }
 

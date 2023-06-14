@@ -25,6 +25,8 @@ public class MP extends JPanel implements MouseListener, MouseMotionListener, Ke
     GameBorder gbu = new GameBorder(0, 120, this, line, true);
     GameBorder gbd = new GameBorder(0, 750, this, line, false);
 
+    Font font = new Font("Impact",Font.PLAIN,15);
+
     Combo combo = new Combo(750,80,this);
 
     int o_x, o_y;
@@ -69,8 +71,9 @@ public class MP extends JPanel implements MouseListener, MouseMotionListener, Ke
             }
         }
         lastDraw = System.currentTimeMillis();
+        g2d.setFont(font);
         g2d.setColor(Color.YELLOW);
-        g2d.drawString("FPS£º " + framePerSecond + "  " + "Thread Sleep£º" + sleepTime + "ms ", 5, 15);
+        g2d.drawString("FPS: " + framePerSecond + "  " + "Thread Sleep: " + sleepTime + "ms ", 5, 15);
 
         for (Tap value : arrayList) {
 //            if ((System.currentTimeMillis() - pastTime) > 30 ) {

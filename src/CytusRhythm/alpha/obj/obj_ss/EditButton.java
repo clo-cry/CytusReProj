@@ -1,5 +1,7 @@
 package CytusRhythm.alpha.obj.obj_ss;
 
+import CytusRhythm.alpha.utils.SelectionScreen;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
@@ -10,7 +12,7 @@ import java.awt.event.MouseEvent;
 public class EditButton extends JButton {
     LineBorder cyanBorder = new LineBorder(Color.CYAN,2);
     Border whiteBorder = BorderFactory.createLineBorder(Color.WHITE,2);
-    public EditButton(){
+    public EditButton(SelectionScreen selectionScreen){
         setBorder(whiteBorder);
         setText("E D I T");
         setFocusable(false);
@@ -32,7 +34,7 @@ public class EditButton extends JButton {
             }
         });
         addActionListener(e -> {
-            System.out.println("A quick brown fox jumps over the lazy dog.");
+            selectionScreen.editPrepared = true;
         });
     }
 }
