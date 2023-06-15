@@ -42,7 +42,7 @@ public class FallDown extends JFrame {
         MP mp = new MP();
         cardPanel.add(mp, "mp");
 
-        SelectionScreen selectionScreen = new SelectionScreen(this);
+        SelectionScreen selectionScreen = new SelectionScreen();
         cardPanel.add(selectionScreen, "selScreen");
 
         mapEditor = new MapEditor();

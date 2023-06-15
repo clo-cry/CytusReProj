@@ -1,21 +1,20 @@
 package CytusRhythm.beta;
 
+import CytusRhythm.beta.utils.SS;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
+import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
+import javafx.scene.robot.Robot;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -23,6 +22,8 @@ import java.io.File;
 public class cyTus extends Application {
     private Scene scene1;
     private Scene scene2;
+    private Scene scene3;
+    private SS SS;
     MediaPlayer mediaPlayer;
     MediaPlayer mediaPlayer2;
     MediaView mediaView;
@@ -32,13 +33,15 @@ public class cyTus extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        Platform.runLater(() -> {
+        Platform.runLater(() -> {       // scene 2
             String videoPath_1 = "video/title05_1.mp4";
             String videoPath_2 = "video/title05_2.mp4";
             String audioPath_1 = "sound/op_loop_01.wav";
+            String audioPath_2 = "sound/start.wav";
             Media media_1 = new Media(new File(videoPath_1).toURI().toString());
             Media media_2 = new Media(new File(videoPath_2).toURI().toString());
             Media media_3 = new Media(new File(audioPath_1).toURI().toString());
+            AudioClip startSE = new AudioClip(new File(audioPath_2).toURI().toString());
 
             // Create MediaPlayer
             MediaPlayer mediaPlayer = new MediaPlayer(media_1);
@@ -47,6 +50,7 @@ public class cyTus extends Application {
 
             // MediaPlayer setting
             mediaPlayer.setAutoPlay(true);
+            startSE.setVolume(6.0);
             mediaPlayer2.setCycleCount(MediaPlayer.INDEFINITE);
             new Thread(new Runnable() {
                 @Override
@@ -83,6 +87,14 @@ public class cyTus extends Application {
                     stackPane.getChildren().remove(mediaView);
                     mediaPlayer1.setAutoPlay(true);
                     stackPane.getChildren().add(mediaView1);
+                    startSE.play();
+                    mediaPlayer1.setOnEndOfMedia(() -> {
+                        mediaPlayer1.dispose();
+                        Platform.runLater(() -> {
+                            stage.setScene(scene3);
+                        });
+
+                    });
                 }
                 count++;
             });
@@ -101,7 +113,13 @@ public class cyTus extends Application {
         layout2.getChildren().addAll(label, backButton);
         scene2 = new Scene(layout2, 1600, 900);
 
-        Platform.runLater(() -> {
+        Platform.runLater(() -> {       // scene 3
+            SS = new SS();
+            scene3 = new Scene(SS,1600,900);
+            stage.setScene(scene3);
+        });
+
+        Platform.runLater(() -> {       // scene 1
 
             Thread thread = new Thread(new Runnable() {
                 @Override

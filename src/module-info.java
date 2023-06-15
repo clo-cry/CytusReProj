@@ -6,6 +6,6 @@ module CytusReProj {
     requires javafx.swing;
 
 //    opens test to javafx.fxml;
-    exports test;
     exports CytusRhythm.beta;
+    exports CytusRhythm.derta;
 }

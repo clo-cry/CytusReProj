@@ -22,7 +22,8 @@ public class SelectionScreen extends JPanel{
     C_paff paff = new C_paff();
     C_robo_head robo_head = new C_robo_head();
 
-    public SelectionScreen(FallDown fallDown){
+
+    public SelectionScreen(){
         neko.execute();
         paff.execute();
         robo_head.execute();
@@ -50,6 +51,7 @@ public class SelectionScreen extends JPanel{
         add(new StartButton(this));
         add(new EditButton(this));
     }
+
 
     @Override
     protected void paintComponent(Graphics g) {
