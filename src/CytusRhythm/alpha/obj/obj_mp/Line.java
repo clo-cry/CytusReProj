@@ -35,7 +35,7 @@ public class Line extends GameObj implements ActionListener {
     public void move() {
         super.move();
         switch (state) {
-            case 1 -> {
+            case 1 : {
                 if (y < 750) {
                     if (color.equals(Color.white)) {
                         y += 6;
@@ -44,8 +44,8 @@ public class Line extends GameObj implements ActionListener {
                     } else y += 10;
 
                 } else state = 2;
-            }
-            case 2 -> {
+            }break;
+            case 2 : {
                 if (y > 120) {
                     if (color.equals(Color.white)) {
                         y -= 6;
@@ -53,7 +53,7 @@ public class Line extends GameObj implements ActionListener {
                         y -= 4;
                     }else y -= 10;
                 } else state = 1;
-            }
+            }break;
         }
     }
 

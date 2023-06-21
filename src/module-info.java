@@ -1,11 +1,15 @@
 module CytusReProj {
+    requires javafx.swing;
+    requires javafx.media;
     requires javafx.controls;
     requires javafx.fxml;
     requires java.desktop;
-    requires javafx.media;
-    requires javafx.swing;
 
-//    opens test to javafx.fxml;
+    opens CytusRhythm.test to javafx.fxml;
+    opens CytusRhythm.derta.controllers to javafx.fxml;
+
     exports CytusRhythm.beta;
+    exports CytusRhythm.test;
+    exports CytusRhythm.Gamma;
     exports CytusRhythm.derta;
 }

@@ -32,7 +32,7 @@ public class FallDown extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         try {
-            setIconImage(ImageIO.read(new File("./img/app_icon.png")));
+            setIconImage(ImageIO.read(new File("img/app_icon.png")));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -103,7 +103,7 @@ public class FallDown extends JFrame {
                 cardLayout.show(cardPanel, "mapEditor");
             }
             switch (state) {
-                case 1 -> {
+                case 1 : {
                     if (trunOn == 0) {
                         SwingUtilities.invokeLater(() -> {
                             try {
@@ -117,8 +117,8 @@ public class FallDown extends JFrame {
                         });
                         trunOn++;
                     }
-                }
-                case 2 -> {
+                }break;
+                case 2 : {
                     if (trunOn == 0) {
                         SwingUtilities.invokeLater(() -> {
                             try {
@@ -132,7 +132,7 @@ public class FallDown extends JFrame {
                         });
                         trunOn++;
                     }
-                }
+                }break;
             }
             try {
                 Thread.sleep(1000);

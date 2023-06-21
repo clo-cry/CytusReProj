@@ -9,7 +9,6 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 
-import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 

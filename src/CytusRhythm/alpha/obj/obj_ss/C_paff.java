@@ -14,7 +14,12 @@ public class C_paff extends SwingWorker {
     BufferedImage subImage;
     BufferedImage image;
     public void drawSelf(Graphics2D graphics2D) {
-
+        File file = new File("paff_r.png");
+        try {
+            ImageIO.write(image,"png",file);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         graphics2D.drawImage(image, 100, 178, null);
     }
 
