@@ -1,13 +1,8 @@
-package CytusRhythm.derta.screen;
+package CytusRhythm.delta.screen;
 
-import CytusRhythm.derta.Main;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 
-import java.awt.*;
 import java.io.IOException;
 
 public class Ss extends StackPane {

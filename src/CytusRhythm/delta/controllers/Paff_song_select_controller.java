@@ -1,26 +1,32 @@
-package CytusRhythm.derta.controllers;
+package CytusRhythm.delta.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.effect.BlendMode;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
-import javafx.scene.shape.Rectangle;
 
 import java.io.File;
 
 public class Paff_song_select_controller {
+
+    public static boolean readyChange = false;
     public MediaView paff_mediaview;
     public AnchorPane root;
 
     ImageView imageView;
     ImageView imageView1;
+    MediaPlayer mediaPlayer;
 
     public static String name = null;
+    @FXML
+    void easyClicked(ActionEvent event) {
+        readyChange = true;
+        mediaPlayer.dispose();
+    }
 
     @FXML
     void previousBtnClicked(ActionEvent event) {
@@ -37,7 +43,7 @@ public class Paff_song_select_controller {
     public void initialize() {
         String videoPath = "video/paff001_song_select.mp4";
         Media media = new Media(new File(videoPath).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setAutoPlay(true);
         paff_mediaview.setMediaPlayer(mediaPlayer);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);

@@ -1,4 +1,4 @@
-package CytusRhythm.derta.screen;
+package CytusRhythm.delta.screen;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.StackPane;

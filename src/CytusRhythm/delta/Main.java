@@ -1,23 +1,23 @@
-package CytusRhythm.derta;
+package CytusRhythm.delta;
 
-import CytusRhythm.derta.controllers.Paff_song_select_controller;
-import CytusRhythm.derta.controllers.SsController;
-import CytusRhythm.derta.screen.*;
-import CytusRhythm.derta.utils.Pinter;
-import javafx.animation.AnimationTimer;
+import CytusRhythm.delta.controllers.Paff_song_select_controller;
+import CytusRhythm.delta.controllers.SsController;
+import CytusRhythm.delta.screen.*;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyCode;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.AudioSpectrumListener;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class Main extends Application {
     public static final double WIDTH = 1600, HEIGHT = 900;
@@ -39,6 +39,8 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
+    public static double[] view = new double[60];
 
     @Override
     public void start(Stage stage) {
@@ -86,6 +88,38 @@ public class Main extends Application {
                                     Platform.runLater(() -> {
                                         stage.setScene(paff_song_select);
                                         Ws.soundLoop_mediaplayer.dispose();
+                                        new Thread(() -> {      // Get changed state: Paff_ss to Room_BodyTalk
+                                            boolean state3 = true;
+                                            while (state3) {
+                                                try {
+                                                    Thread.sleep(10);
+                                                } catch (InterruptedException e) {
+                                                    throw new RuntimeException(e);
+                                                }
+                                                if (Paff_song_select_controller.readyChange) {
+                                                    Platform.runLater(() -> {
+                                                        stage.setScene(room_BodyTalk);
+                                                    });
+                                                    state3 = false;
+                                                }
+                                            }
+                                            new Thread((() -> {
+                                                String videoPath = "sound/Body Talk.wav";
+                                                Media media = new Media(new File(videoPath).toURI().toString());
+                                                MediaPlayer mediaPlayer = new MediaPlayer(media);
+                                                mediaPlayer.setAudioSpectrumListener(new AudioSpectrumListener() {
+                                                    @Override
+                                                    public void spectrumDataUpdate(double v, double v1, float[] floats, float[] floats1) {
+                                                        for (int i = 0; i < 8; i++) {
+                                                            view[i] = -floats[i];
+                                                        }
+                                                    }
+                                                });
+                                                while (true){
+                                                    mediaPlayer.play();
+                                                }
+                                            })).start();
+                                        }).start();
 
                                         new Thread(() -> {      // play waiting music
                                             Media media1 = new Media(new File("sound/song_0_clip.wav").toURI().toString());
@@ -94,13 +128,19 @@ public class Main extends Application {
                                             MediaPlayer mediaPlayer2 = new MediaPlayer(media2);
                                             mediaPlayer1.setCycleCount(MediaPlayer.INDEFINITE);
                                             mediaPlayer2.setCycleCount(MediaPlayer.INDEFINITE);
-                                            while (true) {
+                                            boolean exited = false;
+                                            while (!exited) {
                                                 if (Paff_song_select_controller.name.equals("0")) {
                                                     mediaPlayer1.play();
                                                     mediaPlayer2.stop();
                                                 } else if (Paff_song_select_controller.name.equals("1")) {
                                                     mediaPlayer2.play();
                                                     mediaPlayer1.stop();
+                                                }
+                                                if (Paff_song_select_controller.readyChange){
+                                                    mediaPlayer1.dispose();
+                                                    mediaPlayer2.dispose();
+                                                    exited = true;
                                                 }
                                             }
 

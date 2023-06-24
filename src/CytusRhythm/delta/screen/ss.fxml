@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CytusRhythm.derta.controllers.SsController">
+<AnchorPane prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CytusRhythm.delta.controllers.SsController">
     <children>
         <ScrollPane fx:id="sScroller" hbarPolicy="NEVER" prefHeight="900.0" prefWidth="1600.0" vbarPolicy="NEVER">
             <content>
@@ -20,6 +20,7 @@
                   </Button>
                   <Button fx:id="btn1" layoutX="400.0" layoutY="70.0" mnemonicParsing="false" prefHeight="650.0" prefWidth="230.0" style="-fx-background-color: transparent;" />
                   <Button fx:id="btn2" layoutX="700.0" layoutY="70.0" mnemonicParsing="false" onAction="#btnClicked" prefHeight="650.0" prefWidth="230.0" style="-fx-background-color: transparent;" />
+                  <Button fx:id="btn_4" layoutX="1000.0" layoutY="177.0" mnemonicParsing="false" onAction="#btn_www" prefHeight="650.0" prefWidth="230.0" style="-fx-background-color: transparent;" />
                </children></AnchorPane>
             </content>
             <style>

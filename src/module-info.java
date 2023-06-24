@@ -6,10 +6,10 @@ module CytusReProj {
     requires java.desktop;
 
     opens CytusRhythm.test to javafx.fxml;
-    opens CytusRhythm.derta.controllers to javafx.fxml;
+    opens CytusRhythm.delta.controllers to javafx.fxml;
 
     exports CytusRhythm.beta;
     exports CytusRhythm.test;
     exports CytusRhythm.Gamma;
-    exports CytusRhythm.derta;
+    exports CytusRhythm.delta;
 }

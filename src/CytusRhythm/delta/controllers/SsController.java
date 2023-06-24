@@ -1,4 +1,4 @@
-package CytusRhythm.derta.controllers;
+package CytusRhythm.delta.controllers;
 
 
 import javafx.event.ActionEvent;
@@ -8,7 +8,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -20,6 +19,8 @@ public class SsController {
     public AnchorPane aAnchor;
     @FXML
     public Canvas canvas;
+    @FXML
+    public Button btn_4;
     @FXML
     private Button btn0;
 
@@ -39,6 +40,7 @@ public class SsController {
         graphicsContext.drawImage(new Image("file:img/paff_r.png"), 100, 177);
         graphicsContext.drawImage(new Image("file:img/neko_r.png"), 400, 177);
         graphicsContext.drawImage(new Image("file:img/robo_r.png"), 700, 177);
+        graphicsContext.drawImage(new Image("file:img/www.png"), 1000, 177);
 
         for (int i = 0; i < 24; i++) {
             graphicsContext.strokeRoundRect(100 + i * 300, 70, 230, 650, 20, 20);
@@ -53,7 +55,6 @@ public class SsController {
     @FXML
     void changeScene(ActionEvent event) {
         changeScenePaff = true;
-        System.out.println("change scene");
 //        Color color = new java.awt.Color(240, 234, 201);
     }
     public void initialize() {
@@ -63,6 +64,11 @@ public class SsController {
         sScroller.setMinViewportWidth(1600);
         aAnchor.setStyle("-fx-background-color:black");
         drawInit();
+
+    }
+
+    @FXML
+    void btn_www(ActionEvent event) {
 
     }
 }

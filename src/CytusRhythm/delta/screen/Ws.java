@@ -1,15 +1,12 @@
-package CytusRhythm.derta.screen;
+package CytusRhythm.delta.screen;
 
 import javafx.application.Platform;
-import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
-import javafx.stage.Stage;
 
-import javax.swing.*;
 import java.io.File;
 
 public class Ws extends StackPane {

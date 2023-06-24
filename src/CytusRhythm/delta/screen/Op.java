@@ -1,8 +1,6 @@
-package CytusRhythm.derta.screen;
+package CytusRhythm.delta.screen;
 
 import javafx.application.Platform;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
